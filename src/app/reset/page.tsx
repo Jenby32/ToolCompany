@@ -5,6 +5,9 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useToast } from "@/context/ToastContext";
 
+// Disable static prerendering so search params are available at runtime
+export const dynamic = "force-dynamic";
+
 export default function ResetPage() {
   const params = useSearchParams();
   const token = params.get("token");
