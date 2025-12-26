@@ -87,6 +87,8 @@ const copy = {
   ],
 };
 
+type CopyContent = typeof copy;
+
 export default function Home() {
   const { data: contentData, loading, error } = useContentData();
 
@@ -204,7 +206,7 @@ export default function Home() {
   );
 }
 
-function Hero({ copy }: { copy: typeof copy }) {
+function Hero({ copy }: { copy: CopyContent }) {
   return (
     <section
       className="relative overflow-hidden rounded-3xl border border-stone-200 bg-gradient-to-br from-emerald-50/70 via-white/30 to-amber-50/70 p-10 shadow-[0_20px_60px_rgba(15,23,42,0.08)]"
@@ -299,7 +301,7 @@ function ToolsShowcase({
   copy,
 }: {
   tools: ToolCard[];
-  copy: typeof copy;
+  copy: CopyContent;
 }) {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -388,7 +390,7 @@ function ContactCTA({
   contacts: { id: number; label: string; value: string; kind: string }[] | null;
   loading: boolean;
   error: string | null;
-  copy: typeof copy;
+  copy: CopyContent;
 }) {
   const contactsToShow = contacts ?? [];
 
