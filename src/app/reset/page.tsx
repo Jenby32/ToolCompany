@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useToast } from "@/context/ToastContext";
@@ -9,6 +9,14 @@ import { useToast } from "@/context/ToastContext";
 export const dynamic = "force-dynamic";
 
 export default function ResetPage() {
+  return (
+    <Suspense fallback={null}>
+      <ResetPageContent />
+    </Suspense>
+  );
+}
+
+function ResetPageContent() {
   const params = useSearchParams();
   const token = params.get("token");
   const toast = useToast();
